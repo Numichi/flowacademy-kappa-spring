@@ -21,7 +21,7 @@ public class ShopController {
     /**
      * Lekérdezzük a jelenlegi összes bolt-tot.
      */
-    @GetMapping()
+    @GetMapping
     public Collection<Shop> getAllShop() {
         return shops.values();
     }
@@ -39,7 +39,7 @@ public class ShopController {
     /**
      * Feltöltünk egy Shop elemet.
      */
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void postShop(@RequestBody ShopRequest model) {
         var newId = id++;
