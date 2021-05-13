@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/api/v1/annotation")
@@ -30,9 +31,10 @@ public class AnnotationController {
     }
 
     @GetMapping("pelda2")
-    public void manualAnnotations() throws NoSuchMethodException {
+    public void manualAnnotations() {
         annoRun(new TestClass2());
         annoRun(new TestClass1());
+        annoRun(new AnnotationController(shopRequest));
     }
 
     private void annoRun(Object object) {
@@ -41,6 +43,10 @@ public class AnnotationController {
         for (Method method : clazz.getDeclaredMethods()) {
             if (method.isAnnotationPresent(PeldaKetto.class)) {
                 System.out.println("value="  + method.getAnnotation(PeldaKetto.class).value() + ", sargaDinnye=" + method.getAnnotation(PeldaKetto.class).sargaDinnye());
+            }
+
+            if (method.isAnnotationPresent(GetMapping.class)) {
+                System.out.println("value="  + Arrays.toString(method.getAnnotation(GetMapping.class).value()));
             }
         }
     }
