@@ -40,7 +40,7 @@ public class ShopController {
      * Feltöltünk egy Shop elemet.
      */
     @PostMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.CREATED)
     public void postShop(@RequestBody ShopRequest model) {
         var newId = id++;
 
