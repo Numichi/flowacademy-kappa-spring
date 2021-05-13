@@ -59,7 +59,7 @@ public class ShopController {
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void postShop(@PathVariable Integer id) {
+    public void deleteShop(@PathVariable Integer id) {
         shops.remove(id);
     }
 }
