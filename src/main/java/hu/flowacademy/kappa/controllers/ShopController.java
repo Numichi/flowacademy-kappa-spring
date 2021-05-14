@@ -2,7 +2,6 @@ package hu.flowacademy.kappa.controllers;
 
 import hu.flowacademy.kappa.models.Shop;
 import hu.flowacademy.kappa.controllers.model.ShopRequest;
-import hu.flowacademy.kappa.services.LoggerService;
 import hu.flowacademy.kappa.services.ShopService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +13,9 @@ import java.util.Collection;
 @RequestMapping("/api/v1/shop")
 public class ShopController {
     private ShopService shops;
-    private final LoggerService logger;
 
-    public ShopController(ShopService shops, LoggerService logger) {
+    public ShopController(ShopService shops) {
         this.shops = shops;
-        this.logger = logger;
     }
 
     /**
