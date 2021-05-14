@@ -10,21 +10,12 @@ import java.util.Map;
 
 @Service
 public class ShopService {
-    public final LoggerService logger;
-
-    ShopService(@Qualifier("loggerToConsoleService") LoggerService logger) {
-        this.logger = logger;
-    }
-
+    private final LoggerService logger;
     private int id = 0;
     private final Map<Integer, Shop> shops = new HashMap<>();
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    ShopService(@Qualifier("loggerToConsoleService") LoggerService logger) {
+        this.logger = logger;
     }
 
     public Map<Integer, Shop> getShops() {

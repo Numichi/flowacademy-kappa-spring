@@ -1,4 +1,4 @@
-package hu.flowacademy.kappa.jarmuvek;
+package hu.flowacademy.kappa.megertescellal.jarmuvek;
 
 import org.springframework.stereotype.Component;
 

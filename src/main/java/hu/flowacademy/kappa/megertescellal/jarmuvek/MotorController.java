@@ -1,4 +1,4 @@
-package hu.flowacademy.kappa.jarmuvek;
+package hu.flowacademy.kappa.megertescellal.jarmuvek;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
