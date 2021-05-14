@@ -2,6 +2,8 @@ package hu.flowacademy.kappa.controllers;
 
 import hu.flowacademy.kappa.models.Shop;
 import hu.flowacademy.kappa.controllers.model.ShopRequest;
+import hu.flowacademy.kappa.services.ShopService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,17 +15,18 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/shop")
 public class ShopController {
-    // TODO: @Service-be áthelyezni és szálbiztossá tenni!
-    /** Nem Thread safe! Csak példa miatt használtuk a Map-ot! */
-    private int id = 0;
-    private final Map<Integer, Shop> shops = new HashMap<>();
+    private ShopService shops;
+
+    public ShopController(ShopService shops) {
+        this.shops = shops;
+    }
 
     /**
      * Lekérdezzük a jelenlegi összes bolt-tot.
      */
     @GetMapping
     public Collection<Shop> getAllShop() {
-        return shops.values();
+        return shops.getShops().values();
     }
 
     /**
@@ -31,7 +34,7 @@ public class ShopController {
      */
     @GetMapping("{id}")
     public ResponseEntity<Shop> getShopById(@PathVariable Integer id) {
-        var item = shops.get(id);
+        var item = shops.getShops().get(id);
 
         return (item != null) ? ResponseEntity.ok(item) : ResponseEntity.notFound().build();
     }
@@ -42,16 +45,7 @@ public class ShopController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void postShop(@RequestBody ShopRequest model) {
-        var newId = id++;
-
-        var shop = new Shop();
-        shop.setId(newId);
-        shop.setName(model.getName());
-        shop.setCategory(model.getCategory());
-        shop.setSettlement(model.getSettlement());
-        shop.setZip(model.getZip());
-
-        shops.put(newId, shop);
+        shops.init(model);
     }
 
     /**
@@ -60,6 +54,6 @@ public class ShopController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void postShop(@PathVariable Integer id) {
-        shops.remove(id);
+        shops.getShops().remove(id);
     }
 }
