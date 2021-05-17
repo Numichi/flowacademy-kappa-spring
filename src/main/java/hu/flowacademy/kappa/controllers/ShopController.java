@@ -1,5 +1,6 @@
 package hu.flowacademy.kappa.controllers;
 
+import hu.flowacademy.kappa.config.PropertiesConfig;
 import hu.flowacademy.kappa.models.Shop;
 import hu.flowacademy.kappa.controllers.model.ShopRequest;
 import hu.flowacademy.kappa.services.ShopService;
@@ -23,7 +24,7 @@ public class ShopController {
      */
     @GetMapping
     public Collection<Shop> getAllShop() {
-        return shops.getShops().values();
+        return shops.getShops();
     }
 
     /**
@@ -31,7 +32,7 @@ public class ShopController {
      */
     @GetMapping("{id}")
     public ResponseEntity<Shop> getShopById(@PathVariable Integer id) {
-        var item = shops.getShops().get(id);
+        var item = shops.getById(id);
 
         return (item != null) ? ResponseEntity.ok(item) : ResponseEntity.notFound().build();
     }

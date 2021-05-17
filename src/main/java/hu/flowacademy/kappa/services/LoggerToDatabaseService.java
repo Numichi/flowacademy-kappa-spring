@@ -7,4 +7,9 @@ public class LoggerToDatabaseService implements LoggerService {
     public void log(String message) {
         System.out.println(message);
     }
+
+    @Override
+    public boolean log() {
+        return false;
+    }
 }

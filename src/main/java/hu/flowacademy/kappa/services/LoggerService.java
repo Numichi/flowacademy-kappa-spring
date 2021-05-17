@@ -5,4 +5,5 @@ import org.springframework.stereotype.Component;
 
 public interface LoggerService {
     public void log(String message);
+    public boolean log();
 }
