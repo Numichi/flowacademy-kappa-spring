@@ -45,6 +45,7 @@ public class SpyTest {
         // itt működik, hogy ha "ezt" kapod, akkor ad vissza "azt".
         given(mockList.get(100)).willReturn(expected);
 
+        assertEquals(0, mockList.size());
         assertEquals(expected, mockList.get(100));
     }
 

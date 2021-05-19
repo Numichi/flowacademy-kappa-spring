@@ -1,5 +1,6 @@
 package hu.flowacademy.kappa._ora1controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -12,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import java.util.List;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -159,5 +161,30 @@ class FirstControllerTest {
 
                     assertEquals(body, model);
                 });
+    }
+
+    @Test
+    public void testDataPass() throws Exception {
+        var body = new RequestModel();
+        body.setName("name");
+        body.setCategory("category");
+        body.setSettlement("settlement");
+        body.setZip("zip");
+        body.setAddress("address");
+
+        String jsonString = mapper.writeValueAsString(body);
+
+        String json = mockMvc.perform(put("/api/v1").contentType(MediaType.APPLICATION_JSON).content(jsonString))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+
+        RequestModel model = mapper.readValue(json, RequestModel.class);
+        assertEquals(body, model);
+
+        String json2 = mapper.writeValueAsString(model.getName());
+
+        mockMvc.perform(get("/api/v1/header-1").header("xTestHeader", json2))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").value("name"));
     }
 }

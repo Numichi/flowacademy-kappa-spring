@@ -1,6 +1,7 @@
 package hu.flowacademy.kappa._ora2ioc.injections;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,8 @@ public class InjectionService {
     @Getter
     private final Example1Component component1;
 
-    @Getter
     @Autowired
+    @Getter
     private Example1Component component2;
 
     @Getter
