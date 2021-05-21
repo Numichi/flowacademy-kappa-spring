@@ -10,9 +10,9 @@ import java.util.NoSuchElementException;
 @RestControllerAdvice
 public class AdviceController {
 
-    @ExceptionHandler(NoSuchElementException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String errorKezeles(NoSuchElementException exception) {
-        return "Ezt az özenetet kaptam: " + exception.getMessage();
-    }
+//    @ExceptionHandler(NoSuchElementException.class)
+//    @ResponseStatus(HttpStatus.NOT_FOUND)
+//    public String errorKezeles(NoSuchElementException exception) {
+//        return "Ezt az özenetet kaptam: " + exception.getMessage();
+//    }
 }
