@@ -1,2 +1,11 @@
-application:
-    param1: "dev-env"
+app:
+    secret: "UTo6okSCgG,faOEm9Ve2RE/B5566Zc2x.86TKSTVa002OS3pB$iYKoZ8/ykGagDmwE0c2gM.Wygwf31SMhlr,9xsCULdL6Ds.1FzdB8s5MAc24ElPPEYOl2ldl16BFKz6RnlRLvLuWL0UOqcNAyEkibAZPsbwnHOpPeSwmIe2HbIlGbPMd9L8c03i9bseoqDfF0zBtVgClNsfb2E40VUOR9b1Gdpl4SK7yg1ziHJtqpV3mF3AjN99KiLoGSTrDBGLHbcP"
+
+server:
+    error:
+        whitelabel:
+            enabled: false
+
+# Ugye órán ő volt:
+# app.secret = UTo6okSCgG,faOEm9Ve2RE/B5566Zc2x.86TKSTVa002OS3pB$iYKoZ8/ykGagDmwE0c2gM.Wygwf31SMhlr,9xsCULdL6Ds.1FzdB8s5MAc24ElPPEYOl2ldl16BFKz6RnlRLvLuWL0UOqcNAyEkibAZPsbwnHOpPeSwmIe2HbIlGbPMd9L8c03i9bseoqDfF0zBtVgClNsfb2E40VUOR9b1Gdpl4SK7yg1ziHJtqpV3mF3AjN99KiLoGSTrDBGLHbcP
+# server.error.whitelabel.enabled=false

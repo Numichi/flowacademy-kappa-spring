@@ -10,3 +10,8 @@ public class PropertiesConfig {
 
     private String param1;
 }
+
+
+public class asd extends BasicAuthenticationFilter {
+
+}
