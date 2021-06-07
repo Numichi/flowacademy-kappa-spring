@@ -30,7 +30,7 @@ public class TestController {
     }
 
     /**
-     * Mivel a @Valid generálhat annotációt, mikor az adatok a validáción elbuknak, így javasolt RestControllerAdvice alá helyezni
+     * Mivel a @Valid generálhat exceptiont, mikor az adatok a validáción elbuknak, így javasolt RestControllerAdvice alá helyezni
      * és humánosabb hiba üzenetet generálni. :)
      */
     @PostMapping
